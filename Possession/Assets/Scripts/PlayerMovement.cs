@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] SpriteRenderer playerSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +18,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("left");
+            // Debug.Log("left");
             transform.position = new Vector2(transform.position.x - moveSpeed, transform.position.y);
+            this.GetComponent<SpriteRenderer>().flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("right");
+            // Debug.Log("right");
             transform.position = new Vector2(transform.position.x + moveSpeed, transform.position.y);
+            this.GetComponent<SpriteRenderer>().flipX = false;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            Debug.Log("up");
+            // Debug.Log("up");
             transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("down");
+            // Debug.Log("down");
             transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed);
         }
     }
