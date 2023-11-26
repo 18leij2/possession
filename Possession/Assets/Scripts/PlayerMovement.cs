@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    [SerializeField] SpriteRenderer playerSprite;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite skelester;
+    [SerializeField] private GameObject skelly;
+    private bool possess = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,34 @@ public class PlayerMovement : MonoBehaviour
         {
             // Debug.Log("down");
             transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Debug.Log(possess);
+            if (possess)
+            {
+                spriteRenderer.sprite = skelester;
+                GetComponent<Collider2D>().isTrigger = false;
+                skelly.SetActive(false);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bones")
+        {
+            possess = true;
+            skelly = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Bones")
+        {
+            possess = false;
         }
     }
 }
