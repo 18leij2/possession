@@ -5,23 +5,33 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
+
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
 
-    private string[] sentences;  // Array to hold your dialogue sentences
+    private string[] sentences;
     private int currentSentenceIndex;
+
+
+    void Awake()
+    {
+        // Ensure only one instance exists
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.Log("duplicate instance of dialogue manager created");
+        }
+
+        dialogueBox.SetActive(false);
+    }
 
     void Start()
     {
         dialogueBox.SetActive(false);
-        sentences = new string[]
-        {
-            "This is Dialogue",
-            "This is also Dialogue",
-            "Crazy, right?",
-            "But this is the last one. :("
-        };
-        StartDialogue();
     }
 
     void Update()
@@ -32,9 +42,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue()
+    public void StartDialogue(string[] newSentences)
     {
         dialogueBox.SetActive(true);
+        sentences = newSentences;
         currentSentenceIndex = 0;
         DisplayNextSentence();
     }
