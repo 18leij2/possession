@@ -85,13 +85,13 @@ public class PlayerMovement : MonoBehaviour
             possess = true;
             skelly = collision.gameObject;
         }
-        else if (collision.tag == "Goal")
-        {
-            if (SceneManager.GetActiveScene().buildIndex < 9)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }   
-        }
+        //else if (collision.tag == "Goal")
+        //{
+        //    if (SceneManager.GetActiveScene().buildIndex < 9)
+        //    {
+        //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //    }   
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -106,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
+        }
+
+        else if (skellyForm && collision.gameObject.tag == "Goal")
+        {
+            if (SceneManager.GetActiveScene().buildIndex < 9)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
