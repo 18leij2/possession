@@ -26,6 +26,8 @@ public class OpeningSlides : MonoBehaviour
             " ",
             "Esther just got invited to a Halloween party in the most cursed location in all of Atlanta",
             " ",
+            "What's the worst that could happen?",
+            " ",
             " \"There's no damn way...\" ",
             " \"...that THIS is the place.\" ",
             " \"I-Is this even Atlanta anymore?\" ",
@@ -46,7 +48,7 @@ public class OpeningSlides : MonoBehaviour
             " ",
             "SLICE"
         };
-        gameObject.SetActive(true);
+        StartScene();
     }
 
     // Update is called once per frame
@@ -69,7 +71,8 @@ public class OpeningSlides : MonoBehaviour
     void StartScene()
     {
         index = 0;
-        NextSlide();
+        slideText.text = dialogue[index];
+        slideImage.sprite = slides[index];
     }
 
     void NextSlide()
