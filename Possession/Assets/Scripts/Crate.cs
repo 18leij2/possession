@@ -23,7 +23,8 @@ public class Crate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hole")
         {
-            spriteRenderer.sprite = boxFill;
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = boxFill;
+            // spriteRenderer.sprite = boxFill;
             this.gameObject.SetActive(false);
             collision.collider.isTrigger = true;
         }
