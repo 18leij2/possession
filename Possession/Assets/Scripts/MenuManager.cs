@@ -36,8 +36,8 @@ public class MenuManager : MonoBehaviour {
         dist = menuItems[1].transform.localPosition.y - menuItems[0].transform.localPosition.y;
         offset = 0.9f - menuItems[0].transform.localPosition.y;
 
-        upKey = KeyCode.UpArrow;
-        downKey = KeyCode.DownArrow;
+        upKey = KeyCode.W;
+        downKey = KeyCode.S;
         selectKey = KeyCode.Space;
 
         sfxPlayer = GetComponent<AudioSource>();
@@ -82,7 +82,7 @@ public class MenuManager : MonoBehaviour {
 
             case 0: 
                 // Debug.Log("Continue Game");
-                SceneManager.LoadScene(1); // Credits
+                SceneManager.LoadScene(1); // Continue Game
                 break;
 
             case 1:
@@ -96,7 +96,7 @@ public class MenuManager : MonoBehaviour {
 
             case 3:
                 // Debug.Log("Credits");
-                SceneManager.LoadScene(9); // Credits
+                SceneManager.LoadScene(10); // Credits
                 break;
 
             case 4: 
