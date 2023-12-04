@@ -91,6 +91,7 @@ public class MenuManager : MonoBehaviour {
 
             case 2: 
                 // Debug.Log("New Game");
+                SceneManager.LoadScene(11);
                 break;
 
             case 3:
