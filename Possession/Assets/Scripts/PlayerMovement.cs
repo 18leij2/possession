@@ -111,13 +111,6 @@ public class PlayerMovement : MonoBehaviour
             possess = true;
             skelly = collision.gameObject;
         }
-        else if (collision.tag == "Goal")
-        {
-            if (SceneManager.GetActiveScene().buildIndex < 9)
-            {
-                skelly = collision.gameObject;
-            }           
-        }
         //else if (collision.tag == "Goal")
         //{
         //    if (SceneManager.GetActiveScene().buildIndex < 9)
