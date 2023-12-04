@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.tag == "Goal")
         {
-            if (SceneManager.GetActiveScene().buildIndex + 1 < 9)
+            if (SceneManager.GetActiveScene().buildIndex < 9)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }   
