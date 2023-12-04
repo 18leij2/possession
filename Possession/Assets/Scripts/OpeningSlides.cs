@@ -8,8 +8,9 @@ public class OpeningSlides : MonoBehaviour
 {
 
     public TextMeshProUGUI slideText;
+    public Image slideImage;
 
-    public Image[] slides;
+    public Sprite[] slides;
     public string[] dialogue;
     public float textSpeed;
 
@@ -69,7 +70,7 @@ public class OpeningSlides : MonoBehaviour
     void StartScene()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        NextSlide();
     }
 
     void NextSlide()
@@ -79,10 +80,11 @@ public class OpeningSlides : MonoBehaviour
             index++;
             slideText.text = string.Empty;
             StartCoroutine(TypeLine());
+            slideImage.sprite = slides[index];
         }
         else
         {
-            gameObject.SetActive(false);
+            EndScene();
         }
     }
 
