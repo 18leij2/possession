@@ -82,7 +82,7 @@ public class MenuManager : MonoBehaviour {
 
             case 0: 
                 // Debug.Log("Continue Game");
-                SceneManager.LoadScene(1); // Continue Game
+                SceneManager.LoadScene(1); // Credits
                 break;
 
             case 1:
@@ -91,12 +91,11 @@ public class MenuManager : MonoBehaviour {
 
             case 2: 
                 // Debug.Log("New Game");
-                SceneManager.LoadScene(11);
                 break;
 
             case 3:
                 // Debug.Log("Credits");
-                SceneManager.LoadScene(10); // Credits
+                SceneManager.LoadScene(9); // Credits
                 break;
 
             case 4: 

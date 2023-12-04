@@ -468,8 +468,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Bones")
         {
             possess = true;
-
-            if (!skellyForm)
+            skelly = collision.gameObject;
+        }
+        else if (collision.tag == "Goal")
+        {
+            if (SceneManager.GetActiveScene().buildIndex < 9)
             {
                 skelly = collision.gameObject;
             }           
