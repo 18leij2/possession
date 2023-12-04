@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class OpeningSlides : MonoBehaviour
@@ -102,6 +103,6 @@ public class OpeningSlides : MonoBehaviour
 
     void EndScene()
     {
-        gameObject.SetActive(false);
+         SceneManager.LoadScene("SceneOne");
     }
 }
