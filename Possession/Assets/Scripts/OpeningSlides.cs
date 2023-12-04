@@ -34,6 +34,7 @@ public class OpeningSlides : MonoBehaviour
             " \"Well, I guess some people get really into decorating?\" ",
             " \"Same bunch that hangs up christmas lights on November 1st I gue-\" ",
             "FWOOOOOOOOOOOOOOOOSH",
+            " ", 
             "ssssssssssssssssssssssssssssssss",
             "thud",
             "Later...",
