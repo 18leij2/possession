@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class MenuManager : MonoBehaviour {
 
     public Transform cursor;
@@ -15,6 +16,8 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] public KeyCode upKey;
     [SerializeField] public KeyCode downKey;
     [SerializeField] public KeyCode selectKey;
+
+    [SerializeField] public AudioSource sfxPlayer;
 
     // Start is called before the first frame update
     void Start() {
@@ -37,6 +40,13 @@ public class MenuManager : MonoBehaviour {
         downKey = KeyCode.DownArrow;
         selectKey = KeyCode.Space;
 
+        sfxPlayer = GetComponent<AudioSource>();
+        int sampleRate = 11025;
+        // AudioClip myClip = AudioClip.Create("Sample Noise", samplerate * 2, 1, samplerate, true, OnAudioRead);
+
+        // sfxPlayer.clip = myClip;
+        // sfxPlayer.Play();
+
     } // Start
 
     // Update is called once per frame
@@ -44,16 +54,19 @@ public class MenuManager : MonoBehaviour {
 
         if (Input.GetKeyDown(upKey)) {
             currentOption = Mathf.Clamp(currentOption - 1, 0, 4);
+            sfxPlayer.Play();
         
         } // if
 
         if (Input.GetKeyDown(downKey)) {
             currentOption = Mathf.Clamp(currentOption + 1, 0, 4);
+            sfxPlayer.Play();
         
         } // if
 
         if (Input.GetKeyDown(selectKey)) {
             OptionSelect();
+            sfxPlayer.Play();
         
         } // if
 
