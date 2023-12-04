@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class MenuManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
 
         cursor = this.transform.GetChild(0).transform;
         currentOption = 0;
@@ -65,23 +68,26 @@ public class MenuManager : MonoBehaviour {
         switch (currentOption) {
 
             case 0: 
-                Debug.Log("Continue Game");
+                // Debug.Log("Continue Game");
+                SceneManager.LoadScene(1); // Credits
                 break;
 
             case 1:
-                Debug.Log("Level Select");
+                // Debug.Log("Level Select");
                 break;
 
             case 2: 
-                Debug.Log("New Game");
+                // Debug.Log("New Game");
                 break;
 
             case 3:
-                Debug.Log("Credits");
+                // Debug.Log("Credits");
+                SceneManager.LoadScene(9); // Credits
                 break;
 
             case 4: 
-                Debug.Log("Exit");
+                // Debug.Log("Exit");
+                Application.Quit();
                 break;
 
             default:
