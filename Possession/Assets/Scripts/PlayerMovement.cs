@@ -25,24 +25,24 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             // Debug.Log("left");
-            transform.position = new Vector2(transform.position.x - moveSpeed, transform.position.y);
+            transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y);
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             // Debug.Log("right");
-            transform.position = new Vector2(transform.position.x + moveSpeed, transform.position.y);
+            transform.position = new Vector2(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y);
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
         if (Input.GetKey(KeyCode.W))
         {
             // Debug.Log("up");
-            transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed);
+            transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
             // Debug.Log("down");
-            transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed);
+            transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
