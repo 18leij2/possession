@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -8,10 +9,15 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance;
 
     public GameObject dialogueBox;
+    public Image portrait1;
+    public Image portrait2;
+    public TextMeshProUGUI speakerText;
     public TextMeshProUGUI dialogueText;
+    public float textSpeed;
 
-    private string[] sentences;
-    private int currentSentenceIndex;
+    private string[] dialogue;
+    private string speaker;
+    private int index;
 
 
     void Awake()
@@ -27,39 +33,50 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueBox.SetActive(false);
-    }
-
-    void Start()
-    {
-        dialogueBox.SetActive(false);
+        portrait1.enabled = false;
+        portrait2.enabled = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DisplayNextSentence();
+            NextLine();
         }
     }
 
-    public void StartDialogue(string[] newSentences)
+    public void StartDialogue(string newSpeaker, string[] newDialogue)
     {
         dialogueBox.SetActive(true);
-        sentences = newSentences;
-        currentSentenceIndex = 0;
-        DisplayNextSentence();
+        Debug.Log("Starting Dialogue");
+        speaker = newSpeaker;
+        dialogue = newDialogue;
+        index = 0;
+
+        speakerText.text = speaker;
+        dialogueText.text = dialogue[index];
     }
 
-    void DisplayNextSentence()
+    void NextLine()
     {
-        if (currentSentenceIndex < sentences.Length)
+        if (index < dialogue.Length - 1)
         {
-            dialogueText.text = sentences[currentSentenceIndex];
-            currentSentenceIndex++;
+            index++;
+            dialogueText.text = string.Empty;
+            StartCoroutine(TypeLine());
         }
         else
         {
             EndDialogue();
+        }
+    }
+
+    IEnumerator TypeLine()
+    {
+        foreach (char c in dialogue[index].ToCharArray())
+        {
+            dialogueText.text += c;
+            yield return new WaitForSeconds(textSpeed);
         }
     }
 
