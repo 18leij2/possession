@@ -21,7 +21,7 @@ public class Crate : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Hole")
+        if (collision.gameObject.tag == "Hole" && collision.collider.isTrigger == false)
         {
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = boxFill;
             // spriteRenderer.sprite = boxFill;
