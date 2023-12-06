@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences: []
-  speaker: 
+  speaker: []
   debugButton: {fileID: 467086115}
 --- !u!1 &610900220
 GameObject:
@@ -380,8 +380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315.8, y: 0.0000019073486}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -319.23428, y: -0.00000084771}
+  m_SizeDelta: {x: 200.8599, y: 319.4885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &610900222
 MonoBehaviour:
@@ -853,11 +853,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 1903003174}
-  portrait1: {fileID: 610900222}
-  portrait2: {fileID: 2033833033}
-  speaker: {fileID: 1015884702}
+  portraitImage1: {fileID: 610900222}
+  portraitImage2: {fileID: 2033833033}
+  speakerText: {fileID: 1015884702}
   dialogueText: {fileID: 1959003661}
   textSpeed: 0.01
+  portrait1:
+  - {fileID: 21300000, guid: c9c2bd5142699b843b35126f52bdfbf3, type: 3}
+  - {fileID: 21300000, guid: b7828553a698e12419c5f2f94ebc2642, type: 3}
+  - {fileID: 21300000, guid: 8899761706634084ead4c7dd8ac58dc1, type: 3}
+  - {fileID: 21300000, guid: eec4a010bc39ed1459b28751b964efce, type: 3}
+  - {fileID: 21300000, guid: 70d8afe9ec8f1894b8dacda42cc4bb4c, type: 3}
+  - {fileID: 21300000, guid: 747482fa42e8e9940a7e80c2894725f1, type: 3}
+  - {fileID: 21300000, guid: 0227d63d57129b24f8c88beb043536a3, type: 3}
+  - {fileID: 21300000, guid: f4c71301d45a23e43afb79040613cb5c, type: 3}
+  - {fileID: 21300000, guid: efa78ca8e5487bb439473a16e7c607f8, type: 3}
+  portrait2:
+  - {fileID: 21300000, guid: e9f90c0156a87ed458b80efb25bbfb43, type: 3}
+  - {fileID: 21300000, guid: eb4576b82acbca94394e6773ebe36478, type: 3}
+  - {fileID: 21300000, guid: ca9504c8ccbbe9d4cae193640f7bccd1, type: 3}
+  - {fileID: 21300000, guid: 5ac74a6a78e90444887e827f98221539, type: 3}
+  - {fileID: 21300000, guid: 9335f109e9160d74ab27f5dc97025042, type: 3}
+  - {fileID: 21300000, guid: f0ffc163ffd4161468f221ac2ea7bc07, type: 3}
 --- !u!1 &1959003659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,8 +1052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 315.6, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 277, y: -13.544}
+  m_SizeDelta: {x: 479.0556, y: 312.8032}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033833033
 MonoBehaviour:

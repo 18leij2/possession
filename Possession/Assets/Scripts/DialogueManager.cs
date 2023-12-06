@@ -9,14 +9,18 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance;
 
     public GameObject dialogueBox;
-    public Image portrait1;
-    public Image portrait2;
+    public Image portraitImage1;
+    public Image portraitImage2;
     public TextMeshProUGUI speakerText;
     public TextMeshProUGUI dialogueText;
     public float textSpeed;
+    public Sprite[] portrait1;
+    public Sprite[] portrait2;
 
+    private string[] speaker;
+    private int[] pose;
     private string[] dialogue;
-    private string speaker;
+    
     private int index;
 
 
@@ -33,28 +37,38 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueBox.SetActive(false);
-        portrait1.enabled = false;
-        portrait2.enabled = false;
+        portraitImage1.enabled = false;
+        portraitImage2.enabled = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            NextLine();
+            if (dialogueText.text == dialogue[index])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogueText.text = dialogue[index];
+            }
         }
     }
 
-    public void StartDialogue(string newSpeaker, string[] newDialogue)
+    public void StartDialogue(string[] newSpeaker, int[] newPose, string[] newDialogue)
     {
         dialogueBox.SetActive(true);
         Debug.Log("Starting Dialogue");
         speaker = newSpeaker;
         dialogue = newDialogue;
+        pose = newPose;
         index = 0;
 
-        speakerText.text = speaker;
+        speakerText.text = speaker[index];
         dialogueText.text = dialogue[index];
+        UpdatePortrait();
     }
 
     void NextLine()
@@ -63,11 +77,30 @@ public class DialogueManager : MonoBehaviour
         {
             index++;
             dialogueText.text = string.Empty;
+            speakerText.text = speaker[index];
+            UpdatePortrait();
             StartCoroutine(TypeLine());
         }
         else
         {
             EndDialogue();
+        }
+    }
+
+    void UpdatePortrait()
+    {
+        if (speaker[index] == "Esther")
+        {
+            portraitImage1.enabled = true;
+            portraitImage2.enabled = false;
+            portraitImage1.sprite = portrait1[pose[index]];
+
+        }
+        else if (speaker[index] == "Naascha")
+        {
+            portraitImage1.enabled = false;
+            portraitImage2.enabled = true;
+            portraitImage2.sprite = portrait2[pose[index]];
         }
     }
 

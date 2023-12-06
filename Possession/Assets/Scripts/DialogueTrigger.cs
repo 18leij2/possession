@@ -6,13 +6,27 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public string[] sentences;
-    public string speaker;
+    public int[] poses;
+    public string[] speaker;
     public Button debugButton;
 
     void Start()
     {
         debugButton.onClick.AddListener(StartDialogue);
-        speaker = "Esther";
+        speaker = new string[]
+        {
+            "Esther",
+            "Naascha",
+            "Naascha",
+            "Esther"
+        };
+        poses = new int[] 
+        {
+            0,
+            1,
+            2,
+            3
+        };
         sentences = new string[]
         {
             "This is Dialogue",
@@ -24,7 +38,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void StartDialogue()
     {
-        DialogueManager.Instance.StartDialogue(speaker, sentences);
+        DialogueManager.Instance.StartDialogue(speaker, poses, sentences);
     }
 }
 
