@@ -104,6 +104,5 @@ public class OpeningSlides : MonoBehaviour
     void EndScene()
     {
          SceneManager.LoadScene("SceneOne");
-         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
     }
 }
