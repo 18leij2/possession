@@ -8,11 +8,9 @@ public class DialogueTrigger : MonoBehaviour
     public string[] sentences;
     public int[] poses;
     public string[] speaker;
-    public Button debugButton;
 
     void Start()
     {
-        debugButton.onClick.AddListener(StartDialogue);
         speaker = new string[]
         {
             "Esther",
