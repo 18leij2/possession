@@ -17,6 +17,7 @@ public class OpeningSlides : MonoBehaviour
 
     private int index;
 
+    [SerializeField] public AudioSource sfxPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class OpeningSlides : MonoBehaviour
             " ",
             "SLICE"
         };
+        sfxPlayer = GetComponent<AudioSource>();
         StartScene();
     }
 
@@ -83,6 +85,7 @@ public class OpeningSlides : MonoBehaviour
         {
             index++;
             slideText.text = string.Empty;
+            sfxPlayer.Play();
             StartCoroutine(TypeLine());
             slideImage.sprite = slides[index];
         }
