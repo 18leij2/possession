@@ -90,24 +90,28 @@ public class PauseMenuManager : MonoBehaviour {
 
             case 0: 
                 // Debug.Log("Continue Game");
-                pauseManager.wait = true;
-                pauseManager.paused = false;
+                pauseManager.Deactivate();
+                currentOption = 0;
                 break;
 
             case 1:
                 // Debug.Log("Level Select");
+                currentOption = 0;
                 break;
 
             case 2: 
                 // Debug.Log("New Game");
+                currentOption = 0;
                 break;
 
             case 3:
                 // Debug.Log("Credits");
+                currentOption = 0;
                 break;
 
             case 4: 
                 // Debug.Log("Exit");
+                Application.Quit();
                 break;
 
             default:

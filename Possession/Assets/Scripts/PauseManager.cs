@@ -7,12 +7,14 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] public bool paused;
     [SerializeField] public bool wait;
     [SerializeField] public KeyCode pauseKey;
+    [SerializeField] public AudioSource sfxPlayer;
     
     // Start is called before the first frame update
     void Start() {
         wait = false;
         paused = false;
         pauseKey = KeyCode.Space;
+        sfxPlayer = GetComponent<AudioSource>();
 
     } // Start
  
@@ -20,7 +22,7 @@ public class PauseManager : MonoBehaviour {
     void Update() {
 
         if (!wait && !paused && Input.GetKeyDown(pauseKey)) {
-            paused = true;
+            Activate();
 
         } // if
 
@@ -30,5 +32,17 @@ public class PauseManager : MonoBehaviour {
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
     } // Update
+
+    public void Activate() {
+        paused = true;
+        sfxPlayer.Play();
+
+    } // Activate
+
+    public void Deactivate() {
+        paused = false;
+        wait = true;
+
+    } // Deactivate
 
 } // PauseManager
