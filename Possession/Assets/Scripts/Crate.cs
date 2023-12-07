@@ -6,11 +6,12 @@ public class Crate : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite boxFill;
+    [SerializeField] private AudioSource sfxPlayer;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        sfxPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,10 +24,13 @@ public class Crate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hole" && collision.collider.isTrigger == false)
         {
+            sfxPlayer.Play();
             collision.gameObject.GetComponent<SpriteRenderer>().sprite = boxFill;
             // spriteRenderer.sprite = boxFill;
-            this.gameObject.SetActive(false);
+            transform.position = new Vector3(-9999.9f, -9999.9f, -9999.9f);
+            // this.gameObject.SetActive(false);
             collision.collider.isTrigger = true;
         }
     }
+
 }
