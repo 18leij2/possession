@@ -21,10 +21,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool book = false;
     [SerializeField] private bool bookPhase = false;
 
+    [SerializeField] public AudioSource sfxPlayer;
+    [SerializeField] public AudioClip possessSkellySFX;
+    [SerializeField] public AudioClip dropSkellySFX;
+    [SerializeField] public AudioClip skellyWalkSFX;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sfxPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -114,12 +119,14 @@ public class PlayerMovement : MonoBehaviour
                                     {
                                         transform.position = new Vector2(transform.position.x - (float)0.9, transform.position.y);
                                         this.GetComponent<SpriteRenderer>().flipX = true;
+                                        PlaySFX(skellyWalkSFX, 1.0f);
                                     }
                                 }
                             } else
                             {
                                 transform.position = new Vector2(transform.position.x - (float)0.9, transform.position.y);
                                 this.GetComponent<SpriteRenderer>().flipX = true;
+                                PlaySFX(skellyWalkSFX, 1.0f);
                             }
                         }
                     }
@@ -136,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 transform.position = new Vector2(transform.position.x - (float)0.9, transform.position.y);
                                 this.GetComponent<SpriteRenderer>().flipX = true;
+                                PlaySFX(skellyWalkSFX, 1.0f);
 
                                 GameObject crate = crateLeft.collider.gameObject;
                                 crateLeft.collider.gameObject.transform.position = new Vector2(crate.transform.position.x - (float)0.9, transform.position.y);
@@ -153,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             transform.position = new Vector2(transform.position.x - (float)0.9, transform.position.y);
                             this.GetComponent<SpriteRenderer>().flipX = true;
+                            PlaySFX(skellyWalkSFX, 1.0f);
 
                             GameObject crate = crateLeft.collider.gameObject;
                             crateLeft.collider.gameObject.transform.position = new Vector2(crate.transform.position.x - (float)0.9, transform.position.y);
@@ -162,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         transform.position = new Vector2(transform.position.x - (float)0.9, transform.position.y);
                         this.GetComponent<SpriteRenderer>().flipX = true;
+                        PlaySFX(skellyWalkSFX, 1.0f);
                     }
                 }
             }
@@ -204,12 +214,14 @@ public class PlayerMovement : MonoBehaviour
                                     {
                                         transform.position = new Vector2(transform.position.x + (float)0.9, transform.position.y);
                                         this.GetComponent<SpriteRenderer>().flipX = false;
+                                        PlaySFX(skellyWalkSFX, 1.0f);
                                     }
                                 }
                             } else
                             {
                                 transform.position = new Vector2(transform.position.x + (float)0.9, transform.position.y);
                                 this.GetComponent<SpriteRenderer>().flipX = false;
+                                PlaySFX(skellyWalkSFX, 1.0f);
                             }
                         }
                     }
@@ -227,6 +239,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 transform.position = new Vector2(transform.position.x + (float)0.9, transform.position.y);
                                 this.GetComponent<SpriteRenderer>().flipX = false;
+                                PlaySFX(skellyWalkSFX, 1.0f);
 
                                 GameObject crate = crateRight.collider.gameObject;
                                 crateRight.collider.gameObject.transform.position = new Vector2(crate.transform.position.x + (float)0.9, transform.position.y);
@@ -244,6 +257,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             transform.position = new Vector2(transform.position.x + (float)0.9, transform.position.y);
                             this.GetComponent<SpriteRenderer>().flipX = false;
+                            PlaySFX(skellyWalkSFX, 1.0f);
 
                             GameObject crate = crateRight.collider.gameObject;
                             crateRight.collider.gameObject.transform.position = new Vector2(crate.transform.position.x + (float)0.9, transform.position.y);
@@ -253,6 +267,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         transform.position = new Vector2(transform.position.x + (float)0.9, transform.position.y);
                         this.GetComponent<SpriteRenderer>().flipX = false;
+                        PlaySFX(skellyWalkSFX, 1.0f);
                     }
                 }
             }
@@ -294,11 +309,13 @@ public class PlayerMovement : MonoBehaviour
                                     if (hitUp2.collider.isTrigger)
                                     {
                                         transform.position = new Vector2(transform.position.x, transform.position.y + (float)0.9);
+                                        PlaySFX(skellyWalkSFX, 1.0f);
                                     }
                                 }
                             } else
                             {
                                 transform.position = new Vector2(transform.position.x, transform.position.y + (float)0.9);
+                                PlaySFX(skellyWalkSFX, 1.0f);
                             }
                         }
                     }
@@ -315,6 +332,7 @@ public class PlayerMovement : MonoBehaviour
                             if (hitUpExtra.collider.gameObject.tag == "Hole")
                             {
                                 transform.position = new Vector2(transform.position.x, transform.position.y + (float)0.9);
+                                PlaySFX(skellyWalkSFX, 1.0f);
 
                                 GameObject crate = crateUp.collider.gameObject;
                                 crateUp.collider.gameObject.transform.position = new Vector2(crate.transform.position.x, transform.position.y + (float)0.9);
@@ -331,6 +349,7 @@ public class PlayerMovement : MonoBehaviour
                         else
                         {
                             transform.position = new Vector2(transform.position.x, transform.position.y + (float)0.9);
+                            PlaySFX(skellyWalkSFX, 1.0f);
 
                             GameObject crate = crateUp.collider.gameObject;
                             crateUp.collider.gameObject.transform.position = new Vector2(crate.transform.position.x, transform.position.y + (float)0.9);
@@ -339,6 +358,7 @@ public class PlayerMovement : MonoBehaviour
                     else
                     {
                         transform.position = new Vector2(transform.position.x, transform.position.y + (float)0.9);
+                        PlaySFX(skellyWalkSFX, 1.0f);
                     }
                 }
             }
@@ -381,11 +401,13 @@ public class PlayerMovement : MonoBehaviour
                                     if (hitDown2.collider.isTrigger)
                                     {
                                         transform.position = new Vector2(transform.position.x, transform.position.y - (float)0.9);
+                                        PlaySFX(skellyWalkSFX, 1.0f);
                                     }
                                 }
                             } else
                             {
                                 transform.position = new Vector2(transform.position.x, transform.position.y - (float)0.9);
+                                PlaySFX(skellyWalkSFX, 1.0f);
                             }                      
                         }
                     }
@@ -402,6 +424,7 @@ public class PlayerMovement : MonoBehaviour
                             if (hitDownExtra.collider.gameObject.tag == "Hole")
                             {
                                 transform.position = new Vector2(transform.position.x, transform.position.y - (float)0.9);
+                                PlaySFX(skellyWalkSFX, 1.0f);
 
                                 GameObject crate = crateDown.collider.gameObject;
                                 crateDown.collider.gameObject.transform.position = new Vector2(crate.transform.position.x, transform.position.y - (float)0.9);
@@ -418,6 +441,7 @@ public class PlayerMovement : MonoBehaviour
                         else
                         {
                             transform.position = new Vector2(transform.position.x, transform.position.y - (float)0.9);
+                            PlaySFX(skellyWalkSFX, 1.0f);
 
                             GameObject crate = crateDown.collider.gameObject;
                             crateDown.collider.gameObject.transform.position = new Vector2(crate.transform.position.x, transform.position.y - (float)0.9);
@@ -426,6 +450,7 @@ public class PlayerMovement : MonoBehaviour
                     else
                     {
                         transform.position = new Vector2(transform.position.x, transform.position.y - (float)0.9);
+                        PlaySFX(skellyWalkSFX, 1.0f);
                     }
                 }
             }
@@ -464,6 +489,7 @@ public class PlayerMovement : MonoBehaviour
                 this.gameObject.GetComponent<Animator>().enabled = false;
 
                 transform.position = skelly.transform.position;
+                PlaySFX(possessSkellySFX, 1.0f);
 
                 // GetComponent<Collider2D>().isTrigger = false;
 
@@ -473,6 +499,7 @@ public class PlayerMovement : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().color = tmp;
 
                 skelly.SetActive(false);
+                
             } else if (skellyForm && !possess)
             {
                 skellyForm = false;
@@ -489,6 +516,7 @@ public class PlayerMovement : MonoBehaviour
                 // respawn the bones
                 skelly.transform.position = this.transform.position;
                 skelly.SetActive(true);
+                PlaySFX(dropSkellySFX, 1.0f);
             }
         }
     }
@@ -542,5 +570,12 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
+    }
+
+    public void PlaySFX(AudioClip clip, float volume)
+    {
+        sfxPlayer.volume = volume;
+        sfxPlayer.clip = clip;
+        sfxPlayer.Play();
     }
 }
