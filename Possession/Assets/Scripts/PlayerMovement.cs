@@ -26,15 +26,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public AudioClip dropSkellySFX;
     [SerializeField] public AudioClip skellyWalkSFX;
 
+    [SerializeField] public PauseManager pauseManager;
+
     // Start is called before the first frame update
     void Start()
     {
         sfxPlayer = GetComponent<AudioSource>();
+        pauseManager = GameObject.Find("PauseMenu").GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Disable movement during pause
+        if (pauseManager != null && pauseManager.paused) return;
+
         // enable gizmos, shows raycast detection
         Debug.DrawRay(transform.position, Vector3.left * (float) 0.9, Color.green, 0);
         Debug.DrawRay(transform.position, Vector3.right * (float) 0.9, Color.green, 0);

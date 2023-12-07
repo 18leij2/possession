@@ -38,7 +38,7 @@ public class PauseMenuManager : MonoBehaviour {
         } // for
 
         dist = menuItems[1].transform.localPosition.y - menuItems[0].transform.localPosition.y;
-        offset = 0.9f - menuItems[0].transform.localPosition.y;
+        offset = -2.75f - menuItems[0].transform.localPosition.y;
 
         upKey = KeyCode.W;
         downKey = KeyCode.S;
@@ -79,7 +79,7 @@ public class PauseMenuManager : MonoBehaviour {
         } // if
 
         float y = menuItems[0].transform.localPosition.y + offset + (currentOption * dist);
-        Vector3 cursorPos = new Vector3(-14.1f, y, -1.0f);
+        Vector3 cursorPos = new Vector3(-9.5f, y, -1.0f);
         cursor.localPosition = cursorPos;
 
     } // Update
