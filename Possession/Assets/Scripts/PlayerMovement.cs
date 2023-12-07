@@ -10,11 +10,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer bookRenderer;
+    [SerializeField] private SpriteRenderer dimRenderer;
+    [SerializeField] private SpriteRenderer pageRenderer;
     [SerializeField] private Sprite skelester;
     [SerializeField] private Sprite ghoster;
     [SerializeField] private GameObject skelly;
     [SerializeField] private bool possess = false;
     [SerializeField] private bool skellyForm = false;
+    [SerializeField] private bool book = false;
+    [SerializeField] private bool bookPhase = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         // be bothered to refactor the code, and barring a few edge cases this won't introduce game breaking bugs (but one of such 
         // bugs includes having 3 boxes and 2 holes and 1 wall, filling both holes and then trying to push the 3rd box against the wall
         // will somehow not move the box, yet will move the player. Again this is all easily fixed with just... better logic... my bad lol
-        if (!skellyForm)
+        if (!skellyForm && !bookPhase)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -69,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime);
             }
         }        
-        else if (skellyForm)
+        else if (skellyForm && !bookPhase)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -430,10 +435,33 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log(possess);
-            if (possess && !skellyForm) // if it is possible to possess right now
+            if (book)
+            {
+                if (!bookPhase)
+                {
+                    dimRenderer.enabled = true;
+                    bookRenderer.enabled = true;
+                    bookPhase = true;
+                }
+                else if (bookPhase && pageRenderer.enabled == false)
+                {
+                    bookRenderer.enabled = false;
+                    pageRenderer.enabled = true;
+                }
+                else if (bookPhase && pageRenderer.enabled == true)
+                {
+                    dimRenderer.enabled = false;
+                    bookRenderer.enabled = false;
+                    pageRenderer.enabled = false;
+                    bookPhase = false;
+                }
+            }
+            else if (possess && !skellyForm) // if it is possible to possess right now
             {
                 skellyForm = true;
                 spriteRenderer.sprite = skelester;
+
+                this.gameObject.GetComponent<Animator>().enabled = false;
 
                 transform.position = skelly.transform.position;
 
@@ -450,6 +478,8 @@ public class PlayerMovement : MonoBehaviour
                 skellyForm = false;
                 spriteRenderer.sprite = ghoster;
                 GetComponent<Collider2D>().isTrigger = true;
+
+                this.gameObject.GetComponent<Animator>().enabled = true;
 
                 // change the alpha transparency
                 Color tmp2 = this.GetComponent<SpriteRenderer>().color;
@@ -474,6 +504,10 @@ public class PlayerMovement : MonoBehaviour
                 skelly = collision.gameObject;
             }           
         }
+        else if (collision.tag == "Book")
+        {
+            book = true;
+        }
         //else if (collision.tag == "Goal")
         //{
         //    if (SceneManager.GetActiveScene().buildIndex < 9)
@@ -488,6 +522,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Bones")
         {
             possess = false;
+        }
+        else if (collision.tag == "Book")
+        {
+            book = false;
         }
     }
 
