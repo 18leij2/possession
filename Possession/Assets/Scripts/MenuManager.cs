@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] public KeyCode selectKey;
 
     [SerializeField] public AudioSource sfxPlayer;
+    [SerializeField] public AudioClip uiTap;
+    [SerializeField] public AudioClip uiSelect;
 
     // Start is called before the first frame update
     void Start() {
@@ -41,11 +43,6 @@ public class MenuManager : MonoBehaviour {
         selectKey = KeyCode.Space;
 
         sfxPlayer = GetComponent<AudioSource>();
-        int sampleRate = 11025;
-        // AudioClip myClip = AudioClip.Create("Sample Noise", samplerate * 2, 1, samplerate, true, OnAudioRead);
-
-        // sfxPlayer.clip = myClip;
-        // sfxPlayer.Play();
 
     } // Start
 
@@ -54,18 +51,24 @@ public class MenuManager : MonoBehaviour {
 
         if (Input.GetKeyDown(upKey)) {
             currentOption = Mathf.Clamp(currentOption - 1, 0, 4);
+            sfxPlayer.volume = 1.0f;
+            sfxPlayer.clip = uiTap;
             sfxPlayer.Play();
         
         } // if
 
         if (Input.GetKeyDown(downKey)) {
             currentOption = Mathf.Clamp(currentOption + 1, 0, 4);
+            sfxPlayer.volume = 1.0f;
+            sfxPlayer.clip = uiTap;
             sfxPlayer.Play();
         
         } // if
 
         if (Input.GetKeyDown(selectKey)) {
             OptionSelect();
+            sfxPlayer.clip = uiSelect;
+            sfxPlayer.volume = 0.2f;
             sfxPlayer.Play();
         
         } // if
@@ -82,7 +85,6 @@ public class MenuManager : MonoBehaviour {
 
             case 0: 
                 // Debug.Log("Continue Game");
-                SceneManager.LoadScene(1); // Continue Game
                 break;
 
             case 1:
@@ -91,12 +93,10 @@ public class MenuManager : MonoBehaviour {
 
             case 2: 
                 // Debug.Log("New Game");
-                SceneManager.LoadScene(11);
                 break;
 
             case 3:
                 // Debug.Log("Credits");
-                SceneManager.LoadScene(10); // Credits
                 break;
 
             case 4: 
