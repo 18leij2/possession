@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
