@@ -26,15 +26,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public AudioClip dropSkellySFX;
     [SerializeField] public AudioClip skellyWalkSFX;
 
+    [SerializeField] public PauseManager pauseManager;
+
     // Start is called before the first frame update
     void Start()
     {
         sfxPlayer = GetComponent<AudioSource>();
+        pauseManager = GameObject.Find("PauseMenu").GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Disable movement during pause
+        if (pauseManager != null && pauseManager.paused) return;
+
         // enable gizmos, shows raycast detection
         Debug.DrawRay(transform.position, Vector3.left * (float) 0.9, Color.green, 0);
         Debug.DrawRay(transform.position, Vector3.right * (float) 0.9, Color.green, 0);
@@ -94,7 +100,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitLeft.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -192,7 +202,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitRight.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -291,7 +305,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitUp.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -385,7 +403,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitDown.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -577,7 +599,11 @@ public class PlayerMovement : MonoBehaviour
 
         else if (skellyForm && collision.gameObject.tag == "Goal")
         {
-            if (SceneManager.GetActiveScene().buildIndex < 9)
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SceneManager.LoadScene(12);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex < 10)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }

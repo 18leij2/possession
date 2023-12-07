@@ -117,9 +117,8 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialogueBox.SetActive(false);
-        if (SceneManager.GetActiveScene().buildIndex < 11)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+
+        SceneManager.LoadScene(2);
+
     }
 }

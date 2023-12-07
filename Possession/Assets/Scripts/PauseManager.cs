@@ -13,9 +13,9 @@ public class PauseManager : MonoBehaviour {
     void Start() {
         wait = false;
         paused = false;
-        pauseKey = KeyCode.Space;
+        pauseKey = KeyCode.Escape;
         sfxPlayer = GetComponent<AudioSource>();
-
+        
     } // Start
  
     // Update is called once per frame
