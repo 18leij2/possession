@@ -94,7 +94,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitLeft.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -192,7 +196,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitRight.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -291,7 +299,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitUp.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -385,7 +397,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (hitDown.collider.gameObject.tag == "Goal")
                     {
-                        if (SceneManager.GetActiveScene().buildIndex < 9)
+                        if (SceneManager.GetActiveScene().buildIndex == 1)
+                        {
+                            SceneManager.LoadScene(12);
+                        }
+                        else if (SceneManager.GetActiveScene().buildIndex < 10)
                         {
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         }
@@ -577,7 +593,11 @@ public class PlayerMovement : MonoBehaviour
 
         else if (skellyForm && collision.gameObject.tag == "Goal")
         {
-            if (SceneManager.GetActiveScene().buildIndex < 9)
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SceneManager.LoadScene(12);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex < 10)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
