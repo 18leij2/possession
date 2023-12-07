@@ -318,7 +318,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c56c638405177b04b8a95c0d68214a67, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 85e247cfa6fbdac479ef444ac54a4e78, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -326,7 +326,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 200
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1426,6 +1426,8 @@ MonoBehaviour:
   downKey: 0
   selectKey: 0
   sfxPlayer: {fileID: 0}
+  uiTap: {fileID: 8300000, guid: ace6850e102997e468ad8ddab442e62f, type: 3}
+  uiSelect: {fileID: 8300000, guid: ca7e636a7541ad9478a664d426a124b3, type: 3}
 --- !u!82 &2135197242
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1436,7 +1438,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90caf4a7ed392be47b0c5051547c5b52, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ace6850e102997e468ad8ddab442e62f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1444,7 +1446,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 64
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
