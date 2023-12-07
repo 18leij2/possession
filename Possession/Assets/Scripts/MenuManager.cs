@@ -85,18 +85,21 @@ public class MenuManager : MonoBehaviour {
 
             case 0: 
                 // Debug.Log("Continue Game");
+                SceneManager.LoadScene(1); // Level 1
                 break;
 
             case 1:
-                // Debug.Log("Level Select");
+                Debug.Log("Level Select");
                 break;
 
             case 2: 
                 // Debug.Log("New Game");
+                SceneManager.LoadScene(11); // Opening
                 break;
 
             case 3:
                 // Debug.Log("Credits");
+                SceneManager.LoadScene(10); // Credits
                 break;
 
             case 4: 
@@ -110,5 +113,5 @@ public class MenuManager : MonoBehaviour {
         } // switch
 
     } // OptionSelect
-
+                
 } // MenuManager

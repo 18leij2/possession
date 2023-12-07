@@ -89,23 +89,25 @@ public class PauseMenuManager : MonoBehaviour {
         switch (currentOption) {
 
             case 0: 
-                // Debug.Log("Continue Game");
+                // Debug.Log("Resume Game");
                 pauseManager.Deactivate();
                 currentOption = 0;
                 break;
 
             case 1:
-                // Debug.Log("Level Select");
+                // Debug.Log("Restart Level");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 currentOption = 0;
                 break;
 
             case 2: 
-                // Debug.Log("New Game");
+                Debug.Log("Level Select");
                 currentOption = 0;
                 break;
 
             case 3:
-                // Debug.Log("Credits");
+                // Debug.Log("Return to Menu");
+                SceneManager.LoadScene(0);
                 currentOption = 0;
                 break;
 
